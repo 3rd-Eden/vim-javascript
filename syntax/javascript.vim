@@ -153,7 +153,7 @@ endif "DOM/HTML/CSS
 
 
 "" Code blocks
-syntax cluster javaScriptExpression2 contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBracket,javaScriptParen,javaScriptBlock,javaScriptParenError
+syntax cluster javaScriptExpression2 contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptBracket,javaScriptParen,javaScriptBlock,javaScriptParenError,javaScriptConsole
 syntax cluster javaScriptAll       contains=@javaScriptExpression2,javaScriptLabel,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptTernaryIf
 syntax region  javaScriptBracket   matchgroup=javaScriptBrackets transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     matchgroup=javaScriptParens   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
@@ -164,6 +164,10 @@ syntax match   javaScriptParensError    ")\|}\|\]"
 syntax match   javaScriptParensErrA     contained "\]"
 syntax match   javaScriptParensErrB     contained ")"
 syntax match   javaScriptParensErrC     contained "}"
+
+" highlight console messages as errors
+syntax keyword javaScriptConsole        debugger
+syntax match   javaScriptConsole        /console\%(\.\w\+(.\{-})\%(;\|$\)\)\=/ display
 
 if main_syntax == "javascript"
   syntax sync clear
@@ -246,6 +250,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptParens               SpecialChar
   HiLink javaScriptBrackets             SpecialChar
   HiLink javaScriptBlocks               SpecialChar
+
+  HiLink javaScriptConsole              Error
 
   delcommand HiLink
 endif
