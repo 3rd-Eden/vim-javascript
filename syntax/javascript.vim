@@ -249,9 +249,9 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 
   HiLink javaScriptCssStyles            Label
 
-  HiLink javaScriptParens               SpecialChar
-  HiLink javaScriptBrackets             SpecialChar
-  HiLink javaScriptBlocks               SpecialChar
+  HiLink javaScriptParens               NonText
+  HiLink javaScriptBrackets             NonText
+  HiLink javaScriptBlocks               NonText
 
   HiLink javaScriptClass                Structure
   HiLink javaScriptConsole              Error
