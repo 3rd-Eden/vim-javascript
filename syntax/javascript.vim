@@ -66,7 +66,7 @@ if !exists("javascript_ignore_javaScriptdoc")
   " tags containing type and param
   syntax match  jsDocTags         contained "@\(arg\|argument\|param\|property\)\>" nextgroup=jsDocType skipwhite
   " tags containing type but no param
-  syntax match  jsDocTags         contained "@\(callback\|define\|enum\|external\|implements\|this\|type\|typedef\|return\|returns\)\>" nextgroup=jsDocTypeNoParam skipwhite
+  syntax match  jsDocTags         contained "@\(callback\|define\|enum\|external\|implements\|this\|type\|typedef\|return\|returns\|api\)\>" nextgroup=jsDocTypeNoParam skipwhite
   " tags containing references
   syntax match  jsDocTags         contained "@\(lends\|see\|tutorial\)\>" nextgroup=jsDocSeeTag skipwhite
   " other tags (no extra syntax)
